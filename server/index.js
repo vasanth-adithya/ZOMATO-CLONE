@@ -3,6 +3,9 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 
+//Routes
+import Auth from "./API/Auth/index";
+
 //Database connection
 import ConnectDB from "./database/connection";
 
@@ -16,6 +19,8 @@ zomato.use(helmet());
 zomato.get("/", (req, res) => {
   res.json({ message: "Setup Success" });
 });
+
+zomato.use("/auth", Auth);
 
 zomato.listen(4000, () =>
   ConnectDB()
